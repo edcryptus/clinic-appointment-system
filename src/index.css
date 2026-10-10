@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pine: #174c49;
+  --mint: #dcefe7;
+  --ivory: #faf9f6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-ivory text-charcoal font-sans antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #174c49;
+  color: #faf9f6;
+}
+
+.font-serif-display {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  @apply text-[11px] font-bold uppercase tracking-[0.22em] text-pine/80;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 999px;
+  background: #8aa99a;
+  display: inline-block;
+}
+.eyebrow--light { @apply text-mint; }
+.eyebrow--light::before { background: #dcefe7; }
+
+.hairline {
+  @apply border-line;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid #174c49;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+
+.img-frame {
+  @apply overflow-hidden rounded-xl3 bg-mint-light;
+}
+.img-frame img {
+  @apply h-full w-full object-cover;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.img-frame:hover img {
+  transform: scale(1.03);
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  transition: background-size 0.35s ease;
+  padding-bottom: 2px;
+}
+.link-underline:hover, .link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+.btn-transition {
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-transition:active {
+  transform: translateY(1px);
+}
+
+@layer components {
+  .field-input {
+    @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] text-charcoal placeholder:text-stone2/70;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .field-input:hover { @apply border-sage; }
+  .field-input:focus {
+    @apply border-pine bg-white;
+    box-shadow: 0 0 0 3px rgba(23, 76, 73, 0.12);
+    outline: none;
+  }
+  .field-input[aria-invalid="true"] {
+    @apply border-red-700;
+  }
+}
+
+.slot-btn[aria-pressed="true"] {
+  @apply bg-pine text-white border-pine;
+}
+
+.card-hover {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px -28px rgba(23, 76, 73, 0.35);
+}
+
+.page-hero-band {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #eaf5ef 0%, #faf9f6 100%);
+}
+.page-hero-band::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  top: -120px;
+  width: 380px;
+  height: 380px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(220,239,231,0.9) 0%, rgba(220,239,231,0) 70%);
+  pointer-events: none;
+}
+
+.texture-grain {
+  background-image: radial-gradient(rgba(23,76,73,0.10) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.input-label {
+  @apply block text-[13px] font-semibold text-charcoal;
+}
+
+.chip-status {
+  @apply inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[12px] font-bold;
+}
+
+.step-dot {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.details-summary::-webkit-details-marker { display: none; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }

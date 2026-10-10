@@ -1,0 +1,774 @@
+{
+  "services": [
+    {
+      "id": "svc-general",
+      "slug": "general-consultation",
+      "name": "General Consultation",
+      "category": "Primary care",
+      "shortDescription": "An unhurried first conversation about whatever is on your mind, from new symptoms to ongoing questions.",
+      "description": "A general consultation is the simplest way to start. You sit down with a doctor, talk through what you have noticed, and leave with a clear sense of what comes next. We keep these visits unhurried so there is time for proper listening, a careful examination when needed, and plain-language explanations.",
+      "includes": [
+        "Conversation about your concerns and history",
+        "Basic examination where appropriate",
+        "Clear next steps and written visit notes",
+        "Referral guidance if specialist input would help"
+      ],
+      "durationMin": 30,
+      "price": 600,
+      "image": "",
+      "faqs": [
+        {
+          "q": "What should I bring?",
+          "a": "Bring a list of current medications, any recent test results, and a short note about when your symptoms started. That is plenty."
+        },
+        {
+          "q": "Will I need follow-up tests?",
+          "a": "Only if they would genuinely change the plan. Your doctor will explain why a test is suggested and what it would answer."
+        }
+      ]
+    },
+    {
+      "id": "svc-dental",
+      "slug": "dental-care",
+      "name": "Dental Care",
+      "category": "Dental",
+      "shortDescription": "Routine checkups, cleaning, and practical advice that keeps everyday dental care calm and predictable.",
+      "description": "Our dental visits focus on prevention and comfort. Expect a careful check of teeth and gums, gentle cleaning where needed, and honest guidance about treatment options. We explain costs before anything begins and never rush decisions.",
+      "includes": [
+        "Dental checkup and gum review",
+        "Scale and polish where suitable",
+        "X-ray only when clinically useful",
+        "Personal prevention plan"
+      ],
+      "durationMin": 45,
+      "price": 1000,
+      "image": "",
+      "faqs": [
+        {
+          "q": "I feel nervous about dental visits. Is that okay?",
+          "a": "Completely. Tell us when you book and we will allow extra time, explain each step, and pause whenever you need."
+        },
+        {
+          "q": "Do you see children?",
+          "a": "Yes, routine dental reviews are suitable for school-age children. For very young children, call us and we will advise."
+        }
+      ]
+    },
+    {
+      "id": "svc-pediatrics",
+      "slug": "pediatrics",
+      "name": "Pediatrics",
+      "category": "Children",
+      "shortDescription": "Friendly, unhurried appointments for babies, children, and teens, with time for parents to ask everything.",
+      "description": "Children need a slower pace and a room that does not feel intimidating. Pediatric visits give time for gentle examination, growth and development review, vaccination planning, and plenty of space for parents to ask questions.",
+      "includes": [
+        "Gentle examination at your child's pace",
+        "Growth and development review",
+        "Vaccination planning",
+        "Written summary for parents"
+      ],
+      "durationMin": 30,
+      "price": 650,
+      "image": "",
+      "faqs": [
+        {
+          "q": "Can both parents attend?",
+          "a": "Yes. There is room for two caregivers, and siblings are welcome to sit in quietly."
+        },
+        {
+          "q": "What if my child is unwell on the day?",
+          "a": "Call us before you travel. We will advise whether to keep the visit, adjust the time, or arrange a different kind of review."
+        }
+      ]
+    },
+    {
+      "id": "svc-dermatology",
+      "slug": "dermatology",
+      "name": "Dermatology",
+      "category": "Specialty",
+      "shortDescription": "Help with acne, eczema, rashes, and mole checks, plus honest advice on everyday skin care.",
+      "description": "Dermatology visits take skin concerns seriously without overcomplicating them. Your doctor examines the affected areas, uses dermoscopy where it helps, and builds a treatment plan around products and habits you can realistically maintain.",
+      "includes": [
+        "Focused review of your skin concerns",
+        "Dermoscopy where it adds value",
+        "Treatment and daily skincare plan",
+        "Clear guidance on what to watch for"
+      ],
+      "durationMin": 30,
+      "price": 800,
+      "image": "",
+      "faqs": [
+        {
+          "q": "Should I arrive with clean skin?",
+          "a": "Please avoid heavy makeup or self-tanner on the areas you want reviewed, so nothing is hidden."
+        },
+        {
+          "q": "Do you offer cosmetic treatments?",
+          "a": "This is a medical dermatology visit. We will give honest guidance and point you in the right direction if you want cosmetic options."
+        }
+      ]
+    },
+    {
+      "id": "svc-gynecology",
+      "slug": "gynecology",
+      "name": "Gynecology",
+      "category": "Specialty",
+      "shortDescription": "Private consultations for cycle concerns, contraception, screening reviews, and midlife changes.",
+      "description": "Gynecology visits are private and unhurried. Common reasons to book include cycle or pain concerns, contraception conversations, routine screening reviews, and perimenopause support. You set the pace, and nothing proceeds without your consent.",
+      "includes": [
+        "Private consultation in a quiet room",
+        "Screening review and planning",
+        "Symptom discussion, examination only with consent",
+        "Written follow-up plan"
+      ],
+      "durationMin": 40,
+      "price": 800,
+      "image": "",
+      "faqs": [
+        {
+          "q": "Will there be an examination?",
+          "a": "Only if it is needed and you agree to it. Many concerns can be discussed first, and you can decline or pause at any point."
+        },
+        {
+          "q": "Is the visit confidential?",
+          "a": "Yes. What you discuss stays between you and your care team, within standard medical confidentiality."
+        }
+      ]
+    },
+    {
+      "id": "svc-urology",
+      "slug": "urology",
+      "name": "Urology",
+      "category": "Specialty",
+      "shortDescription": "Respectful care for urinary and male health concerns, with clear explanations at every step.",
+      "description": "Urology visits deal with sensitive topics in a matter-of-fact, respectful way. Expect a thorough conversation about symptoms and history, examination only with your consent, and a plain explanation of what the findings mean for you.",
+      "includes": [
+        "Private discussion of symptoms and history",
+        "Examination only with your consent",
+        "Plain-language explanation of findings",
+        "Clear next steps and referrals if needed"
+      ],
+      "durationMin": 30,
+      "price": 1000,
+      "image": "",
+      "faqs": [
+        {
+          "q": "What happens at a first urology visit?",
+          "a": "Mostly talking. Your doctor reviews your symptoms and history, and any examination is explained first and done only with consent."
+        },
+        {
+          "q": "Do I need a referral to book?",
+          "a": "No referral is needed. Book directly and bring any prior test results if you have them."
+        }
+      ]
+    },
+    {
+      "id": "svc-cardiology",
+      "slug": "cardiology-screening",
+      "name": "Cardiology Screening",
+      "category": "Specialty",
+      "shortDescription": "Heart health screening with blood pressure, ECG review, and a practical prevention plan.",
+      "description": "This screening visit looks at where your heart health stands today and what would lower your risk tomorrow. It covers blood pressure, an ECG where appropriate, and a review of lifestyle and family factors, ending with a prevention plan built around your daily life.",
+      "includes": [
+        "Blood pressure and vital signs",
+        "ECG where appropriate",
+        "Risk factor and family history review",
+        "Personal heart health prevention plan"
+      ],
+      "durationMin": 45,
+      "price": 2500,
+      "image": "",
+      "faqs": [
+        {
+          "q": "Do I need to fast or prepare?",
+          "a": "No special preparation is needed. Take your usual medications and bring a list of them."
+        },
+        {
+          "q": "What if something looks abnormal?",
+          "a": "Your doctor will explain the finding in plain words and arrange the right follow-up or referral without delay."
+        }
+      ]
+    },
+    {
+      "id": "svc-physio",
+      "slug": "physical-therapy",
+      "name": "Physical Therapy",
+      "category": "Rehabilitation",
+      "shortDescription": "Hands-on rehabilitation for back pain, sports injuries, and recovery after surgery.",
+      "description": "Physical therapy sessions start with how you move, not just where it hurts. Your therapist assesses movement and strength, treats what is treatable in the room, and sends you home with exercises that fit into a normal week.",
+      "includes": [
+        "Movement and strength assessment",
+        "Treatment session in the clinic",
+        "Home exercise plan",
+        "Progress review at each visit"
+      ],
+      "durationMin": 45,
+      "price": 800,
+      "image": "",
+      "faqs": [
+        {
+          "q": "What should I wear?",
+          "a": "Comfortable clothing you can move in. Shorts are helpful for knee or hip concerns."
+        },
+        {
+          "q": "How many sessions will I need?",
+          "a": "It depends on the condition. Your therapist reassesses progress each visit and will tell you honestly when you are ready to continue on your own."
+        }
+      ]
+    },
+    {
+      "id": "svc-vaccination",
+      "slug": "vaccination-wellness",
+      "name": "Vaccination and Wellness",
+      "category": "Prevention",
+      "shortDescription": "Routine immunizations and wellness advice for children and adults, in one short visit.",
+      "description": "A short, practical visit for staying up to date. We review which vaccines you or your child are due, administer them safely, and cover the small wellness habits that keep everyday health on track.",
+      "includes": [
+        "Review of due and recommended vaccines",
+        "Safe administration of immunizations",
+        "Aftercare guidance",
+        "Brief wellness and prevention advice"
+      ],
+      "durationMin": 20,
+      "price": 350,
+      "image": "",
+      "faqs": [
+        {
+          "q": "Which vaccines do you offer?",
+          "a": "Routine childhood immunizations and common adult boosters. We confirm eligibility when you book so nothing is wasted."
+        },
+        {
+          "q": "What about side effects?",
+          "a": "Mild soreness or tiredness for a day is common. We explain what to expect and what signs merit a call."
+        }
+      ]
+    }
+  ],
+  "doctors": [
+    {
+      "id": "doc-amara",
+      "slug": "dr-amara-osei",
+      "name": "Dr. Amara Osei",
+      "role": "Family physician",
+      "specialty": "Primary care",
+      "bio": "Dr. Osei enjoys the detective work of general practice. She is known for listening carefully, explaining options in plain language, and making sure patients leave knowing exactly what happens next.",
+      "interests": [
+        "General Consultation",
+        "Vaccination and Wellness"
+      ],
+      "serviceIds": [
+        "svc-general",
+        "svc-vaccination"
+      ],
+      "image": "",
+      "workingDays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "slotsNote": "Usually available weekday mornings and afternoons."
+    },
+    {
+      "id": "doc-daniel",
+      "slug": "dr-daniel-reyes",
+      "name": "Dr. Daniel Reyes",
+      "role": "Dentist",
+      "specialty": "Dental",
+      "bio": "Dr. Reyes believes dental visits should feel calm and predictable. His appointments include time for questions, clear cost explanations, and a prevention plan that fits real life.",
+      "interests": [
+        "Dental Care"
+      ],
+      "serviceIds": [
+        "svc-dental"
+      ],
+      "image": "",
+      "workingDays": [
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "slotsNote": "Available Monday, Tuesday, Thursday, Friday, and Saturday mornings."
+    },
+    {
+      "id": "doc-maya",
+      "slug": "dr-maya-lindqvist",
+      "name": "Dr. Maya Lindqvist",
+      "role": "Pediatrician",
+      "specialty": "Children",
+      "bio": "Dr. Lindqvist works at a child's pace. Parents appreciate her warm manner, her patience with nervous little patients, and the clear written summaries she sends home.",
+      "interests": [
+        "Pediatrics",
+        "Vaccination and Wellness"
+      ],
+      "serviceIds": [
+        "svc-pediatrics",
+        "svc-vaccination"
+      ],
+      "image": "",
+      "workingDays": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "slotsNote": "Available Monday and Wednesday through Friday."
+    },
+    {
+      "id": "doc-sofia",
+      "slug": "dr-sofia-marchetti",
+      "name": "Dr. Sofia Marchetti",
+      "role": "Gynecologist",
+      "specialty": "Gynecology",
+      "bio": "Dr. Marchetti provides private, respectful gynecological care. Patients value her straightforward explanations and the way she lets each person set the pace of the visit.",
+      "interests": [
+        "Gynecology",
+        "General Consultation"
+      ],
+      "serviceIds": [
+        "svc-gynecology",
+        "svc-general"
+      ],
+      "image": "",
+      "workingDays": [
+        2,
+        3,
+        5,
+        6
+      ],
+      "slotsNote": "Available Tuesday, Wednesday, Friday, and Saturday mornings."
+    },
+    {
+      "id": "doc-jonas",
+      "slug": "dr-jonas-weber",
+      "name": "Dr. Jonas Weber",
+      "role": "General practitioner",
+      "specialty": "Primary care",
+      "bio": "Dr. Weber looks after many of the clinic's returning patients. He is organized, thorough with follow-ups, and good at turning complicated results into a simple plan.",
+      "interests": [
+        "General Consultation",
+        "Cardiology Screening"
+      ],
+      "serviceIds": [
+        "svc-general",
+        "svc-cardiology"
+      ],
+      "image": "",
+      "workingDays": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "slotsNote": "Available Monday through Thursday."
+    },
+    {
+      "id": "doc-lena",
+      "slug": "dr-lena-hoffmann",
+      "name": "Dr. Lena Hoffmann",
+      "role": "Dermatologist",
+      "specialty": "Skin",
+      "bio": "Dr. Hoffmann focuses on everyday skin concerns, from acne and eczema to mole checks. She explains treatment options clearly and favors simple routines patients can maintain.",
+      "interests": [
+        "Dermatology"
+      ],
+      "serviceIds": [
+        "svc-dermatology"
+      ],
+      "image": "",
+      "workingDays": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "slotsNote": "Available Tuesday through Friday."
+    },
+    {
+      "id": "doc-marcus",
+      "slug": "dr-marcus-reid",
+      "name": "Dr. Marcus Reid",
+      "role": "Urologist",
+      "specialty": "Urology",
+      "bio": "Dr. Reid provides straightforward urology care in a private setting. Patients appreciate his direct explanations and his unhurried approach to sensitive concerns.",
+      "interests": [
+        "Urology"
+      ],
+      "serviceIds": [
+        "svc-urology"
+      ],
+      "image": "",
+      "workingDays": [
+        1,
+        3,
+        5
+      ],
+      "slotsNote": "Available Monday, Wednesday, and Friday."
+    },
+    {
+      "id": "doc-elena",
+      "slug": "dr-elena-vargas",
+      "name": "Dr. Elena Vargas",
+      "role": "Cardiologist",
+      "specialty": "Heart",
+      "bio": "Dr. Vargas specializes in heart health screening and prevention. Her visits turn test results into a practical plan built around each patient's daily life.",
+      "interests": [
+        "Cardiology Screening"
+      ],
+      "serviceIds": [
+        "svc-cardiology"
+      ],
+      "image": "",
+      "workingDays": [
+        2,
+        4,
+        5
+      ],
+      "slotsNote": "Available Tuesday, Thursday, and Friday."
+    },
+    {
+      "id": "doc-tomas",
+      "slug": "dr-tomas-silva",
+      "name": "Dr. Tomas Silva",
+      "role": "Physical therapist",
+      "specialty": "Rehabilitation",
+      "bio": "Dr. Silva designs recovery programs for back pain, sports injuries, and post-surgical rehabilitation. His sessions are encouraging, hands-on, and paced to each patient.",
+      "interests": [
+        "Physical Therapy"
+      ],
+      "serviceIds": [
+        "svc-physio"
+      ],
+      "image": "",
+      "workingDays": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "slotsNote": "Available Monday, Tuesday, Thursday, and Friday."
+    }
+  ],
+  "availability": [
+    {
+      "id": "av-amara-wd",
+      "doctorId": "doc-amara",
+      "dayOfWeek": 1,
+      "start": "08:00",
+      "end": "17:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-amara-wd2",
+      "doctorId": "doc-amara",
+      "dayOfWeek": 2,
+      "start": "08:00",
+      "end": "17:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-amara-wd3",
+      "doctorId": "doc-amara",
+      "dayOfWeek": 3,
+      "start": "09:00",
+      "end": "17:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-amara-wd4",
+      "doctorId": "doc-amara",
+      "dayOfWeek": 4,
+      "start": "08:00",
+      "end": "17:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-amara-wd5",
+      "doctorId": "doc-amara",
+      "dayOfWeek": 5,
+      "start": "08:00",
+      "end": "15:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-daniel-1",
+      "doctorId": "doc-daniel",
+      "dayOfWeek": 1,
+      "start": "09:00",
+      "end": "18:00",
+      "slotMinutes": 45
+    },
+    {
+      "id": "av-daniel-2",
+      "doctorId": "doc-daniel",
+      "dayOfWeek": 2,
+      "start": "09:00",
+      "end": "18:00",
+      "slotMinutes": 45
+    },
+    {
+      "id": "av-daniel-4",
+      "doctorId": "doc-daniel",
+      "dayOfWeek": 4,
+      "start": "09:00",
+      "end": "18:00",
+      "slotMinutes": 45
+    },
+    {
+      "id": "av-daniel-5",
+      "doctorId": "doc-daniel",
+      "dayOfWeek": 5,
+      "start": "09:00",
+      "end": "17:00",
+      "slotMinutes": 45
+    },
+    {
+      "id": "av-daniel-6",
+      "doctorId": "doc-daniel",
+      "dayOfWeek": 6,
+      "start": "09:00",
+      "end": "13:00",
+      "slotMinutes": 45
+    },
+    {
+      "id": "av-maya-1",
+      "doctorId": "doc-maya",
+      "dayOfWeek": 1,
+      "start": "08:30",
+      "end": "16:30",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-maya-3",
+      "doctorId": "doc-maya",
+      "dayOfWeek": 3,
+      "start": "08:30",
+      "end": "16:30",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-maya-4",
+      "doctorId": "doc-maya",
+      "dayOfWeek": 4,
+      "start": "08:30",
+      "end": "16:30",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-maya-5",
+      "doctorId": "doc-maya",
+      "dayOfWeek": 5,
+      "start": "08:30",
+      "end": "14:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-sofia-2",
+      "doctorId": "doc-sofia",
+      "dayOfWeek": 2,
+      "start": "09:00",
+      "end": "17:00",
+      "slotMinutes": 40
+    },
+    {
+      "id": "av-sofia-3",
+      "doctorId": "doc-sofia",
+      "dayOfWeek": 3,
+      "start": "09:00",
+      "end": "17:00",
+      "slotMinutes": 40
+    },
+    {
+      "id": "av-sofia-5",
+      "doctorId": "doc-sofia",
+      "dayOfWeek": 5,
+      "start": "09:00",
+      "end": "17:00",
+      "slotMinutes": 40
+    },
+    {
+      "id": "av-sofia-6",
+      "doctorId": "doc-sofia",
+      "dayOfWeek": 6,
+      "start": "09:00",
+      "end": "13:00",
+      "slotMinutes": 40
+    },
+    {
+      "id": "av-jonas-1",
+      "doctorId": "doc-jonas",
+      "dayOfWeek": 1,
+      "start": "08:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-jonas-2",
+      "doctorId": "doc-jonas",
+      "dayOfWeek": 2,
+      "start": "08:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-jonas-3",
+      "doctorId": "doc-jonas",
+      "dayOfWeek": 3,
+      "start": "08:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-jonas-4",
+      "doctorId": "doc-jonas",
+      "dayOfWeek": 4,
+      "start": "08:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-lena-2",
+      "doctorId": "doc-lena",
+      "dayOfWeek": 2,
+      "start": "09:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-lena-3",
+      "doctorId": "doc-lena",
+      "dayOfWeek": 3,
+      "start": "09:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-lena-4",
+      "doctorId": "doc-lena",
+      "dayOfWeek": 4,
+      "start": "09:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-lena-5",
+      "doctorId": "doc-lena",
+      "dayOfWeek": 5,
+      "start": "09:00",
+      "end": "15:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-marcus-1",
+      "doctorId": "doc-marcus",
+      "dayOfWeek": 1,
+      "start": "09:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-marcus-3",
+      "doctorId": "doc-marcus",
+      "dayOfWeek": 3,
+      "start": "09:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-marcus-5",
+      "doctorId": "doc-marcus",
+      "dayOfWeek": 5,
+      "start": "09:00",
+      "end": "15:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-elena-2",
+      "doctorId": "doc-elena",
+      "dayOfWeek": 2,
+      "start": "09:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-elena-4",
+      "doctorId": "doc-elena",
+      "dayOfWeek": 4,
+      "start": "09:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-elena-5",
+      "doctorId": "doc-elena",
+      "dayOfWeek": 5,
+      "start": "09:00",
+      "end": "15:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-tomas-1",
+      "doctorId": "doc-tomas",
+      "dayOfWeek": 1,
+      "start": "08:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-tomas-2",
+      "doctorId": "doc-tomas",
+      "dayOfWeek": 2,
+      "start": "08:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-tomas-4",
+      "doctorId": "doc-tomas",
+      "dayOfWeek": 4,
+      "start": "08:00",
+      "end": "16:00",
+      "slotMinutes": 30
+    },
+    {
+      "id": "av-tomas-5",
+      "doctorId": "doc-tomas",
+      "dayOfWeek": 5,
+      "start": "08:00",
+      "end": "14:00",
+      "slotMinutes": 30
+    }
+  ],
+  "appointments": [
+    {
+      "id": "1",
+      "reference": "WM-DEMO01",
+      "serviceId": "svc-general",
+      "serviceName": "General Consultation",
+      "doctorId": "doc-amara",
+      "doctorName": "Dr. Amara Osei",
+      "date": "2026-10-20",
+      "startTime": "09:00",
+      "endTime": "09:30",
+      "durationMin": 30,
+      "price": 600,
+      "patientName": "Sample Patient",
+      "patientEmail": "patient@example.com",
+      "patientPhone": "+1 (555) 000-1100",
+      "reason": "Annual review",
+      "status": "confirmed",
+      "createdAt": "2026-10-01T09:00:00.000Z"
+    }
+  ],
+  "clinic": [
+    {
+      "id": "main",
+      "notice": "Fictional demonstration clinic. All doctors, services, and contact details are invented for this demo."
+    }
+  ],
+  "contactMessages": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
