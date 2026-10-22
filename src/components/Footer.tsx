@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { api, type Service } from "../lib/api";
 import { brand } from "../config/brand";
+import MessengerButton from "./MessengerButton";
 
 export default function Footer() {
   const [services, setServices] = useState<Service[]>([]);
@@ -61,6 +62,7 @@ export default function Footer() {
             <li className="flex gap-2.5"><Phone size={16} className="mt-0.5 shrink-0" /> <span><a className="hover:text-white" href={brand.phoneHref}>{brand.phone}</a><br /><a className="hover:text-white" href={brand.mobileHref}>{brand.mobile}</a></span></li>
             <li className="flex gap-2.5"><Mail size={16} className="mt-0.5 shrink-0" /> <a className="hover:text-white" href={`mailto:${brand.email}`}>{brand.email}</a></li>
           </ul>
+          <MessengerButton className="mt-4 w-full px-4 py-2.5 text-sm sm:w-auto" label="Chat on Messenger" />
           <div className="mt-4 border-t border-white/15 pt-4 text-sm text-ivory/75">
             {brand.hours.map((h) => (
               <p key={h.days} className="flex justify-between gap-3 py-0.5"><span>{h.days}</span><span>{h.time}</span></p>

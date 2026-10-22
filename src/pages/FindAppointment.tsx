@@ -34,7 +34,8 @@ export default function FindAppointment() {
   const [reschedDone, setReschedDone] = useState("");
 
   const dates = next14Days();
-  const isPast = appt ? appt.date < todayISO() : false;
+  const appointmentDate = appt?.appointmentDate || appt?.date || '';
+  const isPast = appointmentDate ? appointmentDate < todayISO() : false;
 
   async function search(e: React.FormEvent) {
     e.preventDefault();
@@ -68,12 +69,12 @@ export default function FindAppointment() {
     if (!appt) return;
     setCancelling(true);
     try {
-      const updated = await api.updateAppointment(appt.id, { status: "cancelled" });
+      const updated = await api.updateAppointment(appt.id, { email: email.trim() });
       setAppt(updated);
       setConfirmCancel(false);
       setRescheduling(false);
-    } catch {
-      setMessage("Cancellation failed. Please try again or call the clinic.");
+    } catch (err) {
+      setMessage(err instanceof Error ? err.message : "Cancellation failed. Please try again or call the clinic.");
     } finally {
       setCancelling(false);
     }

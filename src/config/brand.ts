@@ -24,6 +24,7 @@ export const brand = {
     saturdayStart: "09:00",
     saturdayEnd: "13:00",
   },
+  messengerUrl: "https://m.me/wellnestclinic",
   mapPlaceholderLabel: "Salcedo Village, Makati City (demonstration map)",
   directionsUrl: "https://www.google.com/maps/search/?api=1&query=123+Kalikasan+Avenue+Salcedo+Village+Makati+City",
 } as const;

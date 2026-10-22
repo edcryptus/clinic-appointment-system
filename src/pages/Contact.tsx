@@ -4,6 +4,7 @@ import { api } from "../lib/api";
 import { brand } from "../config/brand";
 import { isValidEmail } from "../lib/format";
 import { Container, Eyebrow, PageHero } from "../components/ui";
+import MessengerButton from "../components/MessengerButton";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -61,6 +62,7 @@ export default function Contact() {
           <div className="card-hover mt-6 rounded-xl3 border hairline bg-white p-5 text-sm shadow-card">
             {brand.hours.map((h) => <p key={h.days} className="flex justify-between py-1"><span>{h.days}</span><span className="font-semibold">{h.time}</span></p>)}
           </div>
+          <MessengerButton className="mt-6 w-full sm:w-auto" label="Message us on Messenger" />
         </div>
         <div className="rounded-xl3 border hairline bg-white p-6 shadow-card sm:p-8">
           {sent ? (

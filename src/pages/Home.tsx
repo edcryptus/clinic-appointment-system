@@ -8,6 +8,7 @@ import DoctorAvatar from "../components/DoctorAvatar";
 import { formatPrice } from "../lib/format";
 import { useReveal } from "../hooks/useReveal";
 import { Container, Eyebrow, SectionHeading } from "../components/ui";
+import MessengerButton from "../components/MessengerButton";
 
 export default function Home() {
   const [services, setServices] = useState<Service[]>([]);
@@ -22,45 +23,50 @@ export default function Home() {
   return (
     <div>
       {/* HERO */}
-      <section className="page-hero-band relative overflow-hidden pt-28 sm:pt-32">
+      <section className="page-hero-band relative overflow-hidden pt-28 sm:pt-32 lg:pt-36">
         <div className="texture-grain absolute inset-0 opacity-40" aria-hidden="true" />
-        <Container className="relative grid items-center gap-12 pb-14 lg:grid-cols-[1.02fr_0.98fr]">
+        <Container className="relative grid items-center gap-10 pb-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:pb-20">
           <div className="reveal">
             <Eyebrow>Welcome to {brand.shortName} · Makati City</Eyebrow>
-            <h1 className="font-serif-display mt-4 max-w-xl text-balance text-[44px] leading-[1.0] text-charcoal sm:text-[68px]">
-              Your health deserves<br />a little <em className="text-pine">more care.</em>
+            <h1 className="font-serif-display mt-4 max-w-xl text-balance text-[42px] leading-[1.05] text-charcoal sm:text-[56px] lg:text-[64px]">
+              Your health deserves a little <em className="text-pine">more care.</em>
             </h1>
-            <p className="mt-5 max-w-md text-[17px] leading-relaxed text-stone2">
+            <p className="mt-6 max-w-lg text-[17px] leading-relaxed text-stone2 sm:text-[18px]">
               Thoughtful healthcare, experienced doctors, and a more personal approach to every visit.
               We are here to help you feel confident about your health.
             </p>
-            <div className="mt-7 flex flex-wrap items-center gap-3">
-              <Link to="/book" className="btn-transition inline-flex items-center gap-2 rounded-full bg-pine px-7 py-3.5 text-[15px] font-semibold text-white shadow-card hover:bg-pine-deep">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Link to="/book" className="btn-transition inline-flex items-center justify-center gap-2 rounded-full bg-pine px-8 py-4 text-[15px] font-semibold text-white shadow-card hover:bg-pine-deep sm:px-9 sm:py-4">
                 Book an Appointment <ArrowRight size={17} />
               </Link>
-              <Link to="/services" className="btn-transition inline-flex items-center gap-2 rounded-full border border-pine/25 bg-white px-7 py-3.5 text-[15px] font-semibold text-pine hover:border-pine">
-                Explore Our Services
+              <Link to="/services" className="btn-transition inline-flex items-center justify-center gap-2 rounded-full border border-pine/25 bg-white px-8 py-4 text-[15px] font-semibold text-pine hover:border-pine hover:bg-mint-pale sm:px-8 sm:py-4">
+                Explore Services
               </Link>
             </div>
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 border-t hairline pt-6">
-              <div>
-                <p className="flex items-center gap-1 text-pine" aria-label="4.9 out of 5 rating">
-                  {Array.from({ length: 5 }).map((_, i) => <Star key={i} size={15} fill="currentColor" strokeWidth={0} />)}
-                </p>
-                <p className="mt-1 text-[13px] text-stone2"><strong className="text-charcoal">4.9 / 5</strong> from 600+ patient visits</p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 border-t hairline pt-6 sm:gap-x-8">
+              <div className="flex items-center gap-3">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-mint">
+                  <p className="flex items-center gap-0.5 text-pine" aria-label="4.9 out of 5 rating">
+                    {Array.from({ length: 5 }).map((_, i) => <Star key={i} size={12} fill="currentColor" strokeWidth={0} />)}
+                  </p>
+                </span>
+                <div>
+                  <p className="text-[15px] font-bold text-charcoal">4.9 / 5 Rating</p>
+                  <p className="text-[13px] text-stone2">600+ patient visits</p>
+                </div>
               </div>
-              <div className="flex items-center gap-2 text-[13px] text-stone2">
-                <ShieldCheck size={17} className="text-pine" />
-                <span>Honest pricing · Written visit notes</span>
+              <div className="flex items-center gap-2 text-[14px] text-stone2">
+                <ShieldCheck size={18} className="shrink-0 text-pine" />
+                <span>Honest pricing · Written notes</span>
               </div>
-              <p className="flex items-center gap-2 text-[13px] text-stone2">
-                <Clock size={15} className="text-pine" />
+              <p className="flex items-center gap-2 text-[14px] text-stone2">
+                <Clock size={16} className="shrink-0 text-pine" />
                 Mon–Fri 8–6 · Sat 9–1
               </p>
             </div>
           </div>
-          <div className="reveal relative">
-            <div className="img-frame relative aspect-[4/4.3] rounded-xl3 shadow-lift sm:aspect-[4/4]">
+          <div className="reveal relative order-first lg:order-last">
+            <div className="img-frame relative aspect-[4/3.8] rounded-xl3 shadow-lift sm:aspect-[4/4]">
               <img
                 src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1100&q=70"
                 alt="Doctor speaking warmly with a patient in a bright clinic room"
@@ -99,7 +105,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section className="py-16 sm:py-24" aria-labelledby="home-services">
+      <section className="py-16 sm:py-20" aria-labelledby="home-services">
         <Container>
           <div className="reveal flex flex-wrap items-end justify-between gap-4">
             <SectionHeading eyebrow="What we help with" title="Care that meets you where you are." copy="Nine focused visit types with honest pricing and enough time to talk properly." />
@@ -112,17 +118,22 @@ export default function Home() {
               return (
               <article key={s.id} className="reveal card-hover group flex flex-col rounded-xl3 border hairline bg-white p-6 shadow-card">
                 <div className="flex items-start justify-between">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-mint p-3 text-pine" aria-hidden="true">
-                    <Icon size={26} strokeWidth={1.8} />
+                  <span className="grid h-14 w-14 place-items-center rounded-2xl bg-mint text-pine" aria-hidden="true">
+                    <Icon size={28} strokeWidth={1.8} />
                   </span>
-                  <span className="rounded-full bg-mint-pale px-3 py-1 text-[11px] font-bold text-pine">{s.durationMin} min</span>
+                  <span className="rounded-full bg-mint-pale px-3 py-1.5 text-[11px] font-bold text-pine">{s.durationMin} min</span>
                 </div>
                 <p className="mt-5 text-[11px] font-bold uppercase tracking-[0.18em] text-sage-dark">{s.category}</p>
-                <h3 className="font-serif-display mt-1.5 text-[22px] leading-snug"><Link to={`/services/${s.slug}`} className="group-hover:text-pine">{s.name}</Link></h3>
-                <p className="mt-2 flex-1 text-[14px] leading-relaxed text-stone2">{s.shortDescription}</p>
-                <div className="mt-4 flex items-center justify-between border-t hairline pt-4">
-                  <span className="text-[15px] font-bold text-pine">{formatPrice(s.price)}</span>
-                  <Link to={`/book?service=${s.slug}`} className="inline-flex items-center gap-1.5 rounded-full bg-mint px-4 py-2 text-sm font-semibold text-pine hover:bg-pine hover:text-white btn-transition">Book it <ArrowRight size={15} /></Link>
+                <h3 className="font-serif-display mt-1.5 text-2xl leading-snug"><Link to={`/services/${s.slug}`} className="group-hover:text-pine">{s.name}</Link></h3>
+                <p className="mt-2 flex-1 text-[15px] leading-relaxed text-stone2">{s.shortDescription}</p>
+                <div className="mt-5 space-y-3 border-t hairline pt-5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[15px] font-bold text-pine">{formatPrice(s.price)}</span>
+                    <Link to={`/services/${s.slug}`} className="text-sm font-semibold text-pine link-underline">View details</Link>
+                  </div>
+                  <Link to={`/book?service=${s.slug}`} className="btn-transition inline-flex w-full items-center justify-center gap-2 rounded-full bg-pine px-5 py-3 text-[14px] font-semibold text-white hover:bg-pine-deep">
+                    Book This Service <ArrowRight size={15} />
+                  </Link>
                 </div>
               </article>
               );
@@ -132,7 +143,7 @@ export default function Home() {
       </section>
 
       {/* DOCTORS */}
-      <section className="border-y hairline bg-mint-pale py-16 sm:py-24" aria-labelledby="home-doctors">
+      <section className="border-y hairline bg-mint-pale py-16 sm:py-20" aria-labelledby="home-doctors">
         <Container>
           <div className="reveal flex flex-wrap items-end justify-between gap-4">
             <SectionHeading eyebrow="People you will meet" title="Good care starts with good people." copy="Each doctor brings a different focus, and every visit leaves room for questions." />
@@ -149,11 +160,14 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-5">
-                  <p className="line-clamp-2 text-sm leading-relaxed text-stone2">{d.bio}</p>
-                  <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-mint-pale px-3 py-1 text-[12px] font-medium text-pine"><Clock size={12} /> {d.slotsNote}</p>
-                  <div className="mt-4 flex gap-4 border-t hairline pt-4">
-                    <Link to={`/doctors/${d.slug}`} className="text-sm font-semibold text-pine link-underline">Profile</Link>
-                    <Link to={`/book?doctor=${d.slug}`} className="text-sm font-semibold text-pine link-underline">Book with {d.name.split(" ")[1]}</Link>
+                  <p className="mb-1 text-[13px] font-semibold text-pine">{d.specialty}</p>
+                  <p className="line-clamp-2 text-[14px] leading-relaxed text-stone2">{d.bio}</p>
+                  <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-mint-pale px-3 py-1.5 text-[12px] font-medium text-pine"><Clock size={13} /> {d.slotsNote}</p>
+                  <div className="mt-4 space-y-2 border-t hairline pt-4">
+                    <Link to={`/doctors/${d.slug}`} className="text-sm font-semibold text-stone2 hover:text-pine link-underline block">View full profile</Link>
+                    <Link to={`/book?doctor=${d.slug}`} className="btn-transition inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-pine px-4 py-2.5 text-[13px] font-semibold text-white hover:bg-pine-deep">
+                      Book Appointment <ArrowRight size={14} />
+                    </Link>
                   </div>
                 </div>
               </article>
@@ -249,6 +263,7 @@ export default function Home() {
             <p className="mt-3 flex gap-2 text-[15px] text-stone2"><MapPin size={17} className="mt-0.5 shrink-0 text-pine" /> {brand.address.line1}, {brand.address.line2}</p>
             <p className="mt-2 flex gap-2 text-[15px]"><Phone size={17} className="mt-0.5 shrink-0 text-pine" /> <span><a className="font-semibold text-pine" href={brand.phoneHref}>{brand.phone}</a><br /><a className="font-semibold text-pine" href={brand.mobileHref}>{brand.mobile}</a></span></p>
             <p className="mt-2 flex gap-2 text-[15px]"><Mail size={17} className="mt-0.5 shrink-0 text-pine" /> <a className="font-semibold text-pine" href={`mailto:${brand.email}`}>{brand.email}</a></p>
+            <MessengerButton className="mt-5 w-full sm:w-auto" label="Chat on Messenger" />
           </div>
           <div className="reveal">
             <h3 className="text-[12px] font-bold uppercase tracking-[0.18em] text-stone2">Opening hours</h3>

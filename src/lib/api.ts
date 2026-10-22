@@ -34,7 +34,8 @@ export interface Appointment {
   serviceName: string;
   doctorId: string;
   doctorName: string;
-  date: string; // YYYY-MM-DD
+  appointmentDate?: string; // PostgreSQL backend returns this
+  date: string; // Canonical field the frontend renders (normalized from appointmentDate when needed)
   startTime: string; // HH:MM
   endTime: string; // HH:MM
   durationMin: number;
@@ -59,6 +60,12 @@ export interface AvailabilityRule {
 
 const API_BASE = (import.meta.env.VITE_API_URL as string | undefined) ?? "http://localhost:3002";
 
+// The PostgreSQL backend returns `appointmentDate`; the json-server mock uses `date`.
+// Normalize to `date` so the UI always has a concrete string to render.
+function withDate<T extends Appointment>(a: T): T {
+  return { ...a, date: a.date || a.appointmentDate || "" };
+}
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
     headers: { "Content-Type": "application/json" },
@@ -75,42 +82,43 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 export const api = {
   baseUrl: API_BASE,
   getServices: () => request<Service[]>("/services"),
-  getService: async (slugOrId: string) => {
-    const bySlug = await request<Service[]>(`/services?slug=${encodeURIComponent(slugOrId)}`);
-    if (bySlug.length > 0) return bySlug[0];
-    return request<Service>(`/services/${encodeURIComponent(slugOrId)}`);
-  },
+  getService: (slugOrId: string) => request<Service>(`/services/${encodeURIComponent(slugOrId)}`),
   getDoctors: () => request<Doctor[]>("/doctors"),
-  getDoctor: async (slugOrId: string) => {
-    const bySlug = await request<Doctor[]>(`/doctors?slug=${encodeURIComponent(slugOrId)}`);
-    if (bySlug.length > 0) return bySlug[0];
-    return request<Doctor>(`/doctors/${encodeURIComponent(slugOrId)}`);
-  },
+  getDoctor: (slugOrId: string) => request<Doctor>(`/doctors/${encodeURIComponent(slugOrId)}`),
   getAvailability: () => request<AvailabilityRule[]>("/availability"),
-  getAppointmentsForDoctorDate: (doctorId: string, date: string) =>
-    request<Appointment[]>(`/appointments?doctorId=${encodeURIComponent(doctorId)}&date=${encodeURIComponent(date)}`),
-  createAppointment: (payload: Omit<Appointment, "id">) =>
-    request<Appointment>("/appointments", { method: "POST", body: JSON.stringify(payload) }),
-  updateAppointment: (id: number | string, patch: Partial<Appointment>) =>
-    request<Appointment>(`/appointments/${encodeURIComponent(String(id))}`, {
-      method: "PATCH",
-      body: JSON.stringify(patch),
-    }),
+  getAppointmentsForDoctorDate: async (doctorId: string, date: string) => {
+    const rows = await request<Appointment[]>(`/appointments?doctorId=${encodeURIComponent(doctorId)}&date=${encodeURIComponent(date)}`);
+    return rows.map(withDate);
+  },
+  createAppointment: async (payload: Omit<Appointment, "id" | "reference" | "createdAt" | "status">) =>
+    withDate(await request<Appointment>("/appointments", { method: "POST", body: JSON.stringify(payload) })),
+  // Cancel: send { email }. Reschedule: send { date, startTime, endTime }.
+  updateAppointment: async (
+    id: number | string,
+    changes: { email: string } | { date: string; startTime: string; endTime: string }
+  ) =>
+    withDate(
+      await request<Appointment>(`/appointments/${encodeURIComponent(String(id))}`, {
+        method: "PATCH",
+        body: JSON.stringify(changes),
+      })
+    ),
   lookupAppointment: async (reference: string, email: string) => {
-    const ref = reference.trim().toUpperCase();
-    const list = await request<Appointment[]>(
-      `/appointments?reference=${encodeURIComponent(ref)}`
-    );
-    const match = list.find(
-      (a) => a.patientEmail.toLowerCase() === email.trim().toLowerCase()
-    );
-    return match ?? null;
+    try {
+      return withDate(
+        await request<Appointment>(
+          `/appointments/lookup?reference=${encodeURIComponent(reference.trim().toUpperCase())}&email=${encodeURIComponent(email.trim())}`
+        )
+      );
+    } catch (error) {
+      return null;
+    }
   },
   submitContactMessage: (payload: {
     name: string;
     email: string;
     subject: string;
     message: string;
-    createdAt: string;
+    createdAt?: string;
   }) => request("/contactMessages", { method: "POST", body: JSON.stringify(payload) }),
 };

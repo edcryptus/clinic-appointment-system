@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, Loader2, CalendarCheck, UserRound, Stethoscope, Clock, ClipboardCheck } from "lucide-react";
 import { api, type Doctor, type Service } from "../lib/api";
 import { buildSlotsForDoctor, next14Days, recheckConflict, type Slot } from "../lib/availability";
-import { addDaysISO, formatLongDate, formatPrice, formatTimeLabel, isValidEmail, makeReference, todayISO } from "../lib/format";
+import { addDaysISO, formatLongDate, formatPrice, formatTimeLabel, isValidEmail, todayISO } from "../lib/format";
 import { Container, Eyebrow } from "../components/ui";
 import DoctorAvatar from "../components/DoctorAvatar";
 
@@ -164,9 +164,7 @@ export default function Booking() {
         if (conflict) throw new Error("That time was just taken. Please choose another slot.");
       }
 
-      const reference = makeReference();
       const created = await api.createAppointment({
-        reference,
         serviceId: service.id,
         serviceName: service.name,
         doctorId: chosenId,
@@ -181,8 +179,6 @@ export default function Booking() {
         patientPhone: phone.trim(),
         dateOfBirth: dob || undefined,
         reason: reason.trim() || undefined,
-        status: "confirmed",
-        createdAt: new Date().toISOString(),
       });
       navigate(`/book/confirmation/${created.reference}?email=${encodeURIComponent(created.patientEmail)}`);
     } catch (err) {
@@ -266,7 +262,7 @@ export default function Booking() {
             </div>
             {!serviceId && <p className="mt-3 text-sm text-stone2">Select one visit type to continue.</p>}
             <div className="mt-6 flex justify-end">
-              <button type="button" disabled={!serviceId} onClick={() => setStep(1)} className="btn-transition inline-flex items-center gap-2 rounded-full bg-pine px-7 py-3.5 font-semibold text-white disabled:opacity-40 hover:bg-pine-deep">Continue <ArrowRight size={16} /></button>
+              <button type="button" disabled={!serviceId} onClick={() => setStep(1)} className="btn-transition inline-flex w-full items-center justify-center gap-2 rounded-full bg-pine px-7 py-4 font-semibold text-white disabled:opacity-40 hover:bg-pine-deep sm:w-auto sm:py-3.5">Continue <ArrowRight size={16} /></button>
             </div>
           </section>
         )}
@@ -294,9 +290,9 @@ export default function Booking() {
                 </button>
               ))}
             </div>
-            <div className="mt-6 flex justify-between">
-              <button type="button" onClick={() => setStep(0)} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold hover:border-pine"><ArrowLeft size={15} /> Back</button>
-              <button type="button" onClick={() => { setStartTime(""); setStep(2); }} className="btn-transition inline-flex items-center gap-2 rounded-full bg-pine px-7 py-3 font-semibold text-white hover:bg-pine-deep">Continue <ArrowRight size={16} /></button>
+            <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
+              <button type="button" onClick={() => setStep(0)} className="inline-flex items-center justify-center gap-1.5 rounded-full border border-line bg-white px-6 py-4 text-sm font-semibold hover:border-pine sm:py-3"><ArrowLeft size={15} /> Back</button>
+              <button type="button" onClick={() => { setStartTime(""); setStep(2); }} className="btn-transition inline-flex items-center justify-center gap-2 rounded-full bg-pine px-7 py-4 font-semibold text-white hover:bg-pine-deep sm:py-3">Continue <ArrowRight size={16} /></button>
             </div>
           </section>
         )}
@@ -308,7 +304,7 @@ export default function Booking() {
             <p className="mt-1 inline-flex flex-wrap items-center gap-2 text-sm text-stone2"><span className="rounded-full bg-mint-pale px-3 py-1 font-semibold text-pine">{service.name} · {service.durationMin} min</span> {doctorId === "any" ? "First available doctor" : doctors.find((d) => d.id === doctorId)?.name}</p>
             <label className="mt-5 block">
               <span className="text-sm font-semibold">Day</span>
-              <span className="no-scrollbar mt-2 flex gap-2 overflow-x-auto pb-1">
+              <span className="no-scrollbar mt-2 flex gap-2 overflow-x-auto pb-1 sm:gap-3">
                 {dates.map((dISO) => {
                   const [y, m, dd] = dISO.split("-").map(Number);
                   const dt = new Date(y, m - 1, dd);
@@ -321,10 +317,10 @@ export default function Booking() {
                       onClick={() => { setDate(dISO); setStartTime(""); }}
                       aria-pressed={date === dISO}
                       title={isSun ? "Closed on Sundays" : formatLongDate(dISO)}
-                      className={`w-[76px] shrink-0 rounded-2xl border px-2 py-3 text-center btn-transition ${date === dISO ? "border-pine bg-pine text-white" : "border-line bg-white hover:border-sage"} disabled:opacity-35`}
+                      className={`min-w-[82px] shrink-0 rounded-2xl border px-3 py-4 text-center btn-transition sm:min-w-[88px] ${date === dISO ? "border-pine bg-pine text-white shadow-card" : "border-line bg-white hover:border-sage"} disabled:opacity-35`}
                     >
                       <span className="block text-[11px] font-bold uppercase tracking-wider">{dt.toLocaleDateString("en-US", { weekday: "short" })}</span>
-                      <span className="font-serif-display block text-xl">{dd}</span>
+                      <span className="font-serif-display block text-2xl sm:text-xl">{dd}</span>
                       <span className="block text-[11px]">{dt.toLocaleDateString("en-US", { month: "short" })}</span>
                     </button>
                   );
@@ -343,7 +339,7 @@ export default function Booking() {
               </div>
             )}
             {!slotsLoading && slots.filter((s) => s.available).length > 0 && (
-              <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4" role="group" aria-label="Time slots">
+              <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4" role="group" aria-label="Time slots">
                 {slots.map((s) => (
                   <button
                     key={s.start}
@@ -351,16 +347,16 @@ export default function Booking() {
                     disabled={!s.available}
                     onClick={() => setStartTime(s.start)}
                     aria-pressed={startTime === s.start}
-                    className="slot-btn rounded-xl border border-line bg-white px-2 py-3 text-sm font-semibold btn-transition hover:border-pine disabled:opacity-35"
+                    className={`rounded-xl border px-4 py-4 text-center text-[14px] font-semibold btn-transition disabled:cursor-not-allowed sm:py-3 ${startTime === s.start ? "border-pine bg-pine text-white shadow-card" : "border-line bg-white hover:border-sage disabled:opacity-30"}`}
                   >
                     {formatTimeLabel(s.start)}
                   </button>
                 ))}
               </div>
             )}
-            <div className="mt-6 flex justify-between">
-              <button type="button" onClick={() => setStep(1)} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold hover:border-pine"><ArrowLeft size={15} /> Back</button>
-              <button type="button" disabled={!startTime} onClick={() => setStep(3)} className="btn-transition inline-flex items-center gap-2 rounded-full bg-pine px-7 py-3 font-semibold text-white disabled:opacity-40 hover:bg-pine-deep">Continue <ArrowRight size={16} /></button>
+            <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
+              <button type="button" onClick={() => setStep(1)} className="inline-flex items-center justify-center gap-1.5 rounded-full border border-line bg-white px-6 py-4 text-sm font-semibold hover:border-pine sm:py-3"><ArrowLeft size={15} /> Back</button>
+              <button type="button" disabled={!startTime} onClick={() => setStep(3)} className="btn-transition inline-flex items-center justify-center gap-2 rounded-full bg-pine px-7 py-4 font-semibold text-white disabled:opacity-40 hover:bg-pine-deep sm:py-3">Continue <ArrowRight size={16} /></button>
             </div>
           </section>
         )}
@@ -382,9 +378,9 @@ export default function Booking() {
               </label>
               {errors.agree && <p className="text-[13px] text-red-700 sm:col-span-2">{errors.agree}</p>}
             </div>
-            <div className="mt-6 flex justify-between">
-              <button type="button" onClick={() => setStep(2)} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold hover:border-pine"><ArrowLeft size={15} /> Back</button>
-              <button type="button" onClick={() => { if (validateDetails()) setStep(4); }} className="btn-transition inline-flex items-center gap-2 rounded-full bg-pine px-7 py-3 font-semibold text-white hover:bg-pine-deep">Review booking <ArrowRight size={16} /></button>
+            <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
+              <button type="button" onClick={() => setStep(2)} className="inline-flex items-center justify-center gap-1.5 rounded-full border border-line bg-white px-6 py-4 text-sm font-semibold hover:border-pine sm:py-3"><ArrowLeft size={15} /> Back</button>
+              <button type="button" onClick={() => { if (validateDetails()) setStep(4); }} className="btn-transition inline-flex items-center justify-center gap-2 rounded-full bg-pine px-7 py-4 font-semibold text-white hover:bg-pine-deep sm:py-3">Review booking <ArrowRight size={16} /></button>
             </div>
           </section>
         )}
@@ -409,9 +405,9 @@ export default function Booking() {
               <button type="button" onClick={() => setStep(3)} className="rounded-full bg-mint px-4 py-2 font-semibold text-pine hover:bg-pine hover:text-white btn-transition">Change details</button>
             </div>
             {submitError && <p className="mt-4 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-800" role="alert">{submitError}</p>}
-            <div className="mt-6 flex justify-between">
-              <button type="button" onClick={() => setStep(3)} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold hover:border-pine"><ArrowLeft size={15} /> Back</button>
-              <button type="button" onClick={confirm} disabled={submitting} className="btn-transition inline-flex items-center gap-2 rounded-full bg-pine px-8 py-3.5 font-semibold text-white disabled:opacity-50 hover:bg-pine-deep">
+            <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
+              <button type="button" onClick={() => setStep(3)} className="inline-flex items-center justify-center gap-1.5 rounded-full border border-line bg-white px-6 py-4 text-sm font-semibold hover:border-pine sm:py-3"><ArrowLeft size={15} /> Back</button>
+              <button type="button" onClick={confirm} disabled={submitting} className="btn-transition inline-flex items-center justify-center gap-2 rounded-full bg-pine px-8 py-4 font-semibold text-white disabled:opacity-50 hover:bg-pine-deep sm:py-3.5">
                 {submitting ? <><Loader2 size={17} className="animate-spin" /> Confirming…</> : "Confirm Appointment"}
               </button>
             </div>
